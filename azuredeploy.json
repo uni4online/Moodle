@@ -7,7 +7,7 @@
             "metadata": {
                 "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
             },
-            "defaultValue": "https://raw.githubusercontent.com/Azure/Moodle/master/"
+            "defaultValue": "https://raw.githubusercontent.com/uni4online/Moodle/master/"
         },
         "_artifactsLocationSasToken": {
             "type": "securestring",
@@ -114,6 +114,10 @@
         },
         "moodleVersion": {
             "allowedValues": [
+                "MOODLE_38_STABLE",
+                "MOODLE_37_STABLE",
+                "v3.6.7",
+                "MOODLE_36_STABLE",
                 "MOODLE_35_STABLE",
                 "MOODLE_34_STABLE",
                 "v3.4.3",
@@ -125,7 +129,7 @@
                 "MOODLE_30_STABLE",
                 "MOODLE_29_STABLE"
             ],
-            "defaultValue": "MOODLE_35_STABLE",
+            "defaultValue": "MOODLE_38_STABLE",
             "metadata": {
                 "description": "The Moodle version you want to install."
             },
@@ -1074,10 +1078,10 @@
             "commonFunctionsScriptUri": "[concat(parameters('_artifactsLocation'),'scripts/helper_functions.sh',parameters('_artifactsLocationSasToken'))]",
             "controllerVmSku": "[parameters('controllerVmSku')]",
             "customVnetId": "[parameters('customVnetId')]",
-            "ctlrNicName": "[concat('controller-vm-nic-',variables('resourceprefix'))]",
-            "ctlrNsgName": "[concat('controller-nsg-',variables('resourceprefix'))]",
-            "ctlrPipName": "[concat('controller-pubip-',variables('resourceprefix'))]",
-            "ctlrVmName": "[concat('controller-vm-',variables('resourceprefix'))]",
+            "ctlrNicName": "[concat('lms-controller-vm-nic-',variables('resourceprefix'))]",
+            "ctlrNsgName": "[concat('lms-controller-nsg-',variables('resourceprefix'))]",
+            "ctlrPipName": "[concat('lms-controller-pubip-',variables('resourceprefix'))]",
+            "ctlrVmName": "[concat('lms-controller-vm-',variables('resourceprefix'))]",
             "ctlrVmSecrets": "[take(variables('ctlrVmSecretsArray'), if(empty(parameters('keyVaultResourceId')), 0, 1))]",
             "dbLogin": "[parameters('dbLogin')]",
             "dbLoginPassword": "[concat(substring(uniqueString(resourceGroup().id, deployment().name), 2, 11), '*7', toUpper('pfiwb'))]",
@@ -1124,8 +1128,8 @@
             "installObjectFsSwitch": "[parameters('installObjectFsSwitch')]",
             "lbDns": "[concat('lb-',variables('resourceprefix'),'.',parameters('location'),'.cloudapp.azure.com')]",
             "lbSku": "[parameters('loadBalancerSku')]",
-            "lbName": "[concat('lb-',variables('resourceprefix'))]",
-            "lbPipName": "[concat('lb-pubip-',variables('resourceprefix'))]",
+            "lbName": "[concat('lms-lb-',variables('resourceprefix'))]",
+            "lbPipName": "[concat('lms-lb-pubip-',variables('resourceprefix'))]",
             "location": "[parameters('location')]",
             "moodleAdminPass": "[concat(toUpper('xl'), substring(uniqueString(resourceGroup().id, deployment().name), 6, 7),',1*8')]",
             "moodleDbName": "moodle",
@@ -1203,8 +1207,8 @@
             "tikaVmSku": "[parameters('tikaVmSku')]",
             "vNetAddressSpace": "[parameters('vNetAddressSpace')]",
             "vaultName": "[concat('vault-',variables('resourceprefix'))]",
-            "vmssName": "[concat('vmss-',variables('resourceprefix'))]",
-            "vmssdStorageAccounttName": "[concat('vmss',uniqueString(resourceGroup().id))]",
+            "vmssName": "[concat('lms-vmss-',variables('resourceprefix'))]",
+            "vmssdStorageAccounttName": "[concat('lms-vmss',uniqueString(resourceGroup().id))]",
             "vnetGwDeploySwitch": "[parameters('vnetGwDeploySwitch')]",
             "vnetName": "[concat('vnet-',variables('resourceprefix'))]",
             "vpnType": "[parameters('vpnType')]",
