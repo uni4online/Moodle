@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Script to set up highly available NFS server on an Ubuntu 16.04 (or higher) VM
+# Script to set up highly available NFS server on an Ubuntu 18.04 (or higher) VM
 # that should be used on Azure with the custom script extension (which runs this script as root)
 #
 
