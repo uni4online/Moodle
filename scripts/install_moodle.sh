@@ -169,7 +169,7 @@ set -ex
     fi
     
     # install pre-requisites
-    sudo apt-get install -y --fix-missing python-software-properties unzip
+    sudo apt-get install -y --fix-missing software-properties-common unzip
 
     # install the entire stack
     sudo apt-get -y  --force-yes install nginx php-fpm varnish >> /tmp/apt5a.log
