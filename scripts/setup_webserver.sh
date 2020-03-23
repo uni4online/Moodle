@@ -245,7 +245,7 @@ EOF
   if [ "$webServerType" = "nginx" ]; then
     cat <<EOF >> /etc/nginx/sites-enabled/${siteFQDN}.conf
 server {
-        listen 81 default;
+        listen 80 default;
         server_name ${siteFQDN};
         root ${htmlRootDir};
 	index index.php index.html index.htm;
@@ -371,6 +371,7 @@ EOF
      # update startup script to wait for certificate in /moodle mount
      setup_moodle_mount_dependency_for_systemd_service nginx || exit 1
      # restart Nginx
+     sudo service apache2 stop
      sudo service nginx restart 
    fi
 
