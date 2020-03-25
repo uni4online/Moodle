@@ -20,8 +20,35 @@
             "metadata": {
                 "description": "ssh public key"
             },
-            "type": "string",
-            "defaultValue": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCojvcta4IxNRNK042sDB9U+kXQr7aTDuMDTbgJNaMW54lZUd+uEgO0LQoNJITIU2Fo+epE98Afmfz2ho6l70+KnaUfjrn7QyK0nJ3bvtV5jhg1hEGHPr2uz2GdT84ZhnlMxEvzH6zHuF7IXaHTpGqEdDkR3brAgR4+HIyKIKOLYH1+Fh1amiO7iABx+h1UrtoEM/c3zYswGt/rfO5TQ0+GtbPcE2kkdOSJiMgn2D2+dnEbINBFhAnHtmrJ9NijNzVEtKUxCscak9HQQkFj9pUvZCTqFRa1SC1amy8Re5w5MtjFj23pE3vGpTRfPds+oXTlfFsneyj9MIE9+WtyteCdRPdOQKSTxuPhVop3UKoOnIVmprT7IVoUTq5DbeNWiX+48LkwwM7lryVp95e+lt1hM7PbaBIJsnCSc9FdkqmguLadQRXz8/UmDR0VH1gs3TfC22Jy+JJK/OxNhL7BaSb/vKKWE6NBlrD7JhpkmQMvpcyQFxz/GCj94jUU3EeCJZn46K0ul7hk10fZLenMd8qJBBJS0ZZI6VOBwG3CS12QyMBahrHXYUtlUDfn4CCkYAxJNqIQO8481fGk5jB+YEkZ/yO6jLSKegDZOEhZhhW3QXpNRLZcidXMcY15RKfAfzc5f73YIQRG1W4T9TQm3hAInPmbX8p691jUtHx6leUyRQ== uni4online\ricus.nortje@CPTESRICUSN"
+            "type": "string"
+        },
+        "customVnetId": {
+            "defaultValue": "",
+            "metadata": {
+                "description": "Azure Resource ID of the Azure virtual network where you want to deploy your Moodle resources. A vnet resource ID is of the following format: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxxxx/resourceGroups/gggg/providers/Microsoft.Network/virtualNetworks/vvvv. Note that this virtual network must be on the same Azure location as this template deployment location. If this parameter is blank, a new Azure virtual network will be created and used. In that case, the address space of the newly created virtual network will be */16 of the following vNetAddressSpace parameter value below."
+            },
+            "type": "string"
+        },
+        "vNetAddressSpace": {
+            "defaultValue": "172.31.0.0",
+            "metadata": {
+                "description": "If existing VNET, add addresspace as configured in existing VNET."
+            },
+            "type": "string"
+        },
+        "subnetWebName": {
+            "defaultValue": "web-subnet",
+            "metadata": {
+                "description": "web-subnet name"
+            },
+            "type": "string"
+        },
+        "subnetRangeWeb": {
+            "defaultValue": "172.31.0.0/24",
+            "metadata": {
+                "description": "Subnet Address Space and Range"
+            },
+            "type": "string"
         }
     },
     "resources": [

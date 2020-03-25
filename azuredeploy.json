@@ -600,6 +600,20 @@
             },
             "type": "string"
         },
+        "subnetWebName": {
+            "defaultValue": "web-subnet",
+            "metadata": {
+                "description": "web-subnet name"
+            },
+            "type": "string"
+        },
+        "subnetRangeWeb": {
+            "defaultValue": "172.31.0.0/24",
+            "metadata": {
+                "description": "Subnet Address Space and Range"
+            },
+            "type": "string"
+        },
         "gatewayType": {
             "allowedValues": [
                 "Vpn",
@@ -1078,10 +1092,10 @@
             "commonFunctionsScriptUri": "[concat(parameters('_artifactsLocation'),'scripts/helper_functions.sh',parameters('_artifactsLocationSasToken'))]",
             "controllerVmSku": "[parameters('controllerVmSku')]",
             "customVnetId": "[parameters('customVnetId')]",
-            "ctlrNicName": "[concat('controller-vm-nic-',variables('resourceprefix'))]",
-            "ctlrNsgName": "[concat('controller-nsg-',variables('resourceprefix'))]",
-            "ctlrPipName": "[concat('controller-pubip-',variables('resourceprefix'))]",
-            "ctlrVmName": "[concat('controller-vm-',variables('resourceprefix'))]",
+            "ctlrNicName": "[concat('lms-controller-vm-nic-',variables('resourceprefix'))]",
+            "ctlrNsgName": "[concat('lms-controller-nsg-',variables('resourceprefix'))]",
+            "ctlrPipName": "[concat('lms-controller-pubip-',variables('resourceprefix'))]",
+            "ctlrVmName": "[concat('lms-controller-vm-',variables('resourceprefix'))]",
             "ctlrVmSecrets": "[take(variables('ctlrVmSecretsArray'), if(empty(parameters('keyVaultResourceId')), 0, 1))]",
             "dbLogin": "[parameters('dbLogin')]",
             "dbLoginPassword": "[concat(substring(uniqueString(resourceGroup().id, deployment().name), 2, 11), '*7', toUpper('pfiwb'))]",
@@ -1128,8 +1142,8 @@
             "installObjectFsSwitch": "[parameters('installObjectFsSwitch')]",
             "lbDns": "[concat('lb-',variables('resourceprefix'),'.',parameters('location'),'.cloudapp.azure.com')]",
             "lbSku": "[parameters('loadBalancerSku')]",
-            "lbName": "[concat('lb-',variables('resourceprefix'))]",
-            "lbPipName": "[concat('lb-pubip-',variables('resourceprefix'))]",
+            "lbName": "[concat('lms-lb-',variables('resourceprefix'))]",
+            "lbPipName": "[concat('lms-lb-pubip-',variables('resourceprefix'))]",
             "location": "[parameters('location')]",
             "moodleAdminPass": "[concat(toUpper('xl'), substring(uniqueString(resourceGroup().id, deployment().name), 6, 7),',1*8')]",
             "moodleDbName": "moodle",
@@ -1194,7 +1208,7 @@
             "subnetTika": "[concat('tika-subnet-',variables('resourceprefix'))]",
             "subnetTikaPrefix": "[concat( variables('octets')[0], '.', variables('octets')[1], '.', string(add(int(variables('octets')[2]),1)))]",
             "subnetTikaRange": "[concat( variables('octets')[0], '.', variables('octets')[1], '.', string(add(int(variables('octets')[2]),1)), '.0/24')]",
-            "subnetWeb": "[concat('web-subnet-',variables('resourceprefix'))]",
+            "subnetWeb": "[parameters('subnetWebName')]",
             "subnetWebPrefix": "[concat( variables('octets')[0], '.', variables('octets')[1], '.', string(add(int(variables('octets')[2]),0)))]",
             "subnetWebRange": "[variables('subnetWebRange')]",
             "thumbprintSslCert": "[if(or(empty(parameters('keyVaultResourceId')), empty(parameters('sslCertThumbprint'))), 'None', parameters('sslCertThumbprint'))]",
@@ -1234,6 +1248,6 @@
         "octets": "[split(parameters('vNetAddressSpace'), '.')]",
         "resourceprefix": "[substring(uniqueString(resourceGroup().id, deployment().name), 3, 6)]",
         "subnetSanPrefix": "[concat( variables('octets')[0], '.', variables('octets')[1], '.', string(add(int(variables('octets')[2]),2)))]",
-        "subnetWebRange": "[concat( variables('octets')[0], '.', variables('octets')[1], '.', string(add(int(variables('octets')[2]),0)), '.0/24')]"
+        "subnetWebRange": "[parameters('subnetRangeWeb')]"
     }
 }
