@@ -1228,7 +1228,7 @@
             "tikaVmName": "[concat(variables('resourceprefix'), '-tika-vm')]",
             "tikaVmSku": "[parameters('tikaVmSku')]",
             "vNetAddressSpace": "[parameters('vNetAddressSpace')]",
-            "vaultName": "[concat(variables('resourceprefix'), '-vault')]",
+            "vaultName": "[concat(variables('resourceprefix'), '-lms-vault')]",
             "vmssName": "[concat(variables('resourceprefix'), '-vmss-lms')]",
             "vmssdStorageAccounttName": "[concat('vmsslms',uniqueString(resourceGroup().id))]",
             "vnetGwDeploySwitch": "[parameters('vnetGwDeploySwitch')]",
