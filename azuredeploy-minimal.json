@@ -49,6 +49,14 @@
                 "description": "Subnet Address Space and Range"
             },
             "type": "string"
+        },
+        "customPrefix": {
+            "type": "string",
+            "maxLength": 6,
+            "metadata": {
+                "description": "Optional custom prefix"
+            },
+            "defaultValue": "none"
         }
     },
     "resources": [
@@ -63,9 +71,15 @@
                     "_artifactsLocationSasToken":   { "value": "[parameters('_artifactsLocationSasToken')]" },
                     "sshPublicKey":                 { "value": "[parameters('sshPublicKey')]" },
                     "fileServerDiskCount":          { "value": 2 },
-                    "fileServerDiskSize":           { "value": 32 },
-                    "webServerType":                { "value": "nginx"},
-                    "moodleVersion":                { "value": "MOODLE_38_STABLE"}
+                    "fileServerDiskSize":           { "value": 128 },
+                    "moodleVersion":                { "value": "MOODLE_38_STABLE" },
+                    "webServerType":                { "value": "nginx" },
+                    "azureBackupSwitch":            { "value": true },
+                    "customPrefix":               { "value": "[parameters('customPrefix')]" },
+                    "customVnetId":                 { "value": "[parameters('customVnetId')]" },
+                    "vNetAddressSpace":             { "value": "[parameters('vNetAddressSpace')]" },
+                    "subnetWebName":                { "value": "[parameters('subnetWebName')]" },
+                    "subnetRangeWeb":               { "value": "[parameters('subnetRangeWeb')]" }
                 },
                 "templateLink": {
                     "uri": "[concat(parameters('_artifactsLocation'), 'azuredeploy.json', parameters('_artifactsLocationSasToken'))]"
