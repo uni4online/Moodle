@@ -70,7 +70,7 @@
                 "type": "[parameters('moodleCommon').dbServerType]",
                 "fqdn": "[parameters('dbFQDN')]",
                 "adminLogin": "[parameters('moodleCommon').dbLogin]",
-                "adminLoginAzure": "[concat(parameters('moodleCommon').dbLogin, '@', parameters('moodleCommon').resourcesPrefix, '-', parameters('moodleCommon').dbServerType )]",
+                "adminLoginAzure": "[concat(parameters('moodleCommon').dbLogin, '@', parameters('moodleCommon').dbServerType, '-', parameters('moodleCommon').resourcesPrefix)]",
                 "adminPassword": "[parameters('moodleCommon').dbLoginPassword]",
                 "mssqlDbServiceObjectiveName": "[parameters('moodleCommon').mssqlDbServiceObjectiveName]",
                 "mssqlDbEdition": "[parameters('moodleCommon').mssqlDbEdition]",
