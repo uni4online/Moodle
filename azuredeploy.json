@@ -1230,7 +1230,7 @@
             "vNetAddressSpace": "[parameters('vNetAddressSpace')]",
             "vaultName": "[concat(variables('resourceprefix'), '-lms-vault')]",
             "vmssName": "[concat(variables('resourceprefix'), '-vmss-lms')]",
-            "vmssdStorageAccounttName": "[concat('vmsslms',uniqueString(resourceGroup().id))]",
+            "vmssdStorageAccounttName": "[tolower(concat(variables('resourceprefix'), 'vmsabs'))]",
             "vnetGwDeploySwitch": "[parameters('vnetGwDeploySwitch')]",
             "vnetName": "[concat(variables('resourceprefix'), '-vnet')]",
             "vpnType": "[parameters('vpnType')]",
