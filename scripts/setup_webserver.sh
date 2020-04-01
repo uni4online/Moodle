@@ -204,7 +204,7 @@ EOF
     # Configure nginx/https
     cat <<EOF >> /etc/nginx/sites-enabled/${siteFQDN}.conf
 server {
-        listen 443 ssl;
+        listen 443 ssl http2;
         root ${htmlRootDir};
 	index index.php index.html index.htm;
 
